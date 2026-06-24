@@ -1,0 +1,31 @@
+.hud {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top));
+  left: 14px;
+  right: 14px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.hud > div {
+  min-width: 96px;
+  padding: 10px 12px;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.hud strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 1.18rem;
+  line-height: 1.1;
+}
+
+.level-complete .efficiency strong {
+  color: var(--accent);
+}

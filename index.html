@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101820" />
+    <title>Traffic Manager</title>
+  </head>
+  <body>
+    <main id="app" class="game-shell">
+      <header class="hud">
+        <div>
+          <span class="label">Level</span>
+          <strong>1</strong>
+        </div>
+        <div class="efficiency">
+          <span class="label">Efficiency</span>
+          <strong id="efficiencyValue">0%</strong>
+        </div>
+      </header>
+      <canvas id="gameCanvas" aria-label="Изометрический перекрёсток"></canvas>
+      <section class="control-panel" aria-label="Настройки светофоров">
+        <div class="status-row">
+          <span id="phaseText">Phase</span>
+          <span id="goalText">Цель: Efficiency ≥ 80%</span>
+        </div>
+        <label class="slider-row">
+          <span>Horizontal Green Time</span>
+          <output id="horizontalOutput">7s</output>
+          <input id="horizontalSlider" type="range" min="2" max="10" value="7" />
+        </label>
+        <label class="slider-row">
+          <span>Vertical Green Time</span>
+          <output id="verticalOutput">3s</output>
+          <input id="verticalSlider" type="range" min="2" max="10" value="3" />
+        </label>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
