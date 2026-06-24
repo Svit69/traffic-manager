@@ -28,6 +28,7 @@ export class CanvasRenderer {
     this.buildingRenderer.renderCornerBlocks();
     this.roadRenderer.renderIntersection(snapshot);
     this.#renderQueuedVehicles(simulation);
+    this.#renderCrossingVehicles(simulation);
     this.signalRenderer.renderSignals(snapshot.activeAxis);
   }
 
@@ -38,5 +39,10 @@ export class CanvasRenderer {
   #renderQueuedVehicles(simulation) {
     simulation.horizontalFlow.vehicles.forEach((vehicle, index) => vehicle.renderObject(this, index));
     simulation.verticalFlow.vehicles.forEach((vehicle, index) => vehicle.renderObject(this, index));
+  }
+
+  #renderCrossingVehicles(simulation) {
+    simulation.horizontalFlow.crossingVehicles.forEach((vehicle) => vehicle.renderObject(this, 0));
+    simulation.verticalFlow.crossingVehicles.forEach((vehicle) => vehicle.renderObject(this, 0));
   }
 }
