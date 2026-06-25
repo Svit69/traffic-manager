@@ -34,7 +34,7 @@ export class VehicleMotionController {
   }
 
   #snapToTargetWhenArrived(targetY) {
-    const arrivalTolerance = 2 * this.route.bounds.ratio;
+    const arrivalTolerance = 2 * this.route.frame.scale;
     if (this.route.y - targetY > arrivalTolerance) return;
     this.route.y = targetY;
     this.speed = 0;
@@ -42,7 +42,7 @@ export class VehicleMotionController {
   }
 
   #createVehicleSnapshot() {
-    if (this.state === "done") this.resetRoute(this.route.bounds);
+    if (this.state === "done") this.resetRoute(this.route.frame);
     return { ...this.route, state: this.state };
   }
 }

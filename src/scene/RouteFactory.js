@@ -1,16 +1,24 @@
 export class RouteFactory {
-  createVerticalRoute(bounds) {
-    const carHeight = Math.min(bounds.height * 0.22, 210 * bounds.ratio);
+  createVerticalRoute(frame) {
+    const carHeight = frame.height * 0.125;
     return {
-      bounds,
-      x: bounds.width / 2,
-      y: bounds.height + carHeight,
-      stopY: bounds.height * 0.56,
-      exitY: -carHeight,
+      frame,
+      x: this.#resolveX(frame, 0.465),
+      y: this.#resolveY(frame, 1.12),
+      stopY: this.#resolveY(frame, 0.705),
+      exitY: this.#resolveY(frame, -0.14),
       carHeight,
       carWidth: carHeight * 0.545,
-      maxSpeed: Math.max(250, bounds.height * 0.42),
-      acceleration: Math.max(360, bounds.height * 0.62)
+      maxSpeed: frame.height * 0.38,
+      acceleration: frame.height * 0.7
     };
+  }
+
+  #resolveX(frame, normalizedX) {
+    return frame.x + frame.width * normalizedX;
+  }
+
+  #resolveY(frame, normalizedY) {
+    return frame.y + frame.height * normalizedY;
   }
 }
