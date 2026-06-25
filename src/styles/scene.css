@@ -4,7 +4,7 @@
   display: grid;
   place-items: center;
   padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
-  background: #0f172a;
+  background: #d2d7e1;
 }
 
 #sceneCanvas {
