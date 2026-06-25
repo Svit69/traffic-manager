@@ -6,7 +6,7 @@ export class SceneFrameResolver {
   }
 
   resolveFrame() {
-    const scale = Math.max(
+    const scale = Math.min(
       this.canvas.width / this.sourceWidth,
       this.canvas.height / this.sourceHeight
     );
