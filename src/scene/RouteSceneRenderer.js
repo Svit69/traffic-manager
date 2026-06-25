@@ -1,5 +1,6 @@
 import { SceneFrameResolver } from "./SceneFrameResolver.js";
 import { SceneLayerRenderer } from "./SceneLayerRenderer.js";
+import { SceneSpriteRenderer } from "./SceneSpriteRenderer.js";
 
 export class RouteSceneRenderer {
   constructor(canvas) {
@@ -7,6 +8,7 @@ export class RouteSceneRenderer {
     this.context = canvas.getContext("2d");
     this.frameResolver = new SceneFrameResolver(canvas);
     this.layerRenderer = new SceneLayerRenderer(this.context);
+    this.spriteRenderer = new SceneSpriteRenderer(this.context);
   }
 
   resolveSceneFrame() {
@@ -20,6 +22,7 @@ export class RouteSceneRenderer {
     this.layerRenderer.renderLayer(assets.borderBack, frame);
     this.layerRenderer.renderLayer(assets.buildings, frame);
     this.layerRenderer.renderLayer(assets.borderFront, frame);
+    this.spriteRenderer.renderTrafficLight(assets.trafficLight, frame);
     this.#renderCar(assets.car, vehicle);
   }
 

@@ -3,17 +3,19 @@ import borderBackUrl from "../assets/graphics/boarder_1_1.png";
 import borderFrontUrl from "../assets/graphics/boarder_1_2.png";
 import buildingsUrl from "../assets/graphics/buildings.png";
 import roadUrl from "../assets/graphics/road_1.png";
+import trafficLightUrl from "../assets/graphics/traffic_light_1.png";
 
 export class SceneAssetLoader {
   async loadSceneAssets() {
-    const [road, borderBack, buildings, borderFront, car] = await Promise.all([
+    const [road, borderBack, buildings, borderFront, trafficLight, car] = await Promise.all([
       this.#loadImage(roadUrl),
       this.#loadImage(borderBackUrl),
       this.#loadImage(buildingsUrl),
       this.#loadImage(borderFrontUrl),
+      this.#loadImage(trafficLightUrl),
       this.#loadImage(carSpriteUrl)
     ]);
-    return { road, borderBack, buildings, borderFront, car };
+    return { road, borderBack, buildings, borderFront, trafficLight, car };
   }
 
   #loadImage(source) {
