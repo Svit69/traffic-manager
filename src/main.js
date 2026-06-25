@@ -1,15 +1,5 @@
 import "./styles/main.css";
-import { GameController } from "./ui/GameController.js";
+import { CarRouteDemo } from "./scene/CarRouteDemo.js";
 
-const controller = new GameController({
-  canvas: document.querySelector("#gameCanvas"),
-  horizontalSlider: document.querySelector("#horizontalSlider"),
-  verticalSlider: document.querySelector("#verticalSlider"),
-  horizontalOutput: document.querySelector("#horizontalOutput"),
-  verticalOutput: document.querySelector("#verticalOutput"),
-  efficiencyValue: document.querySelector("#efficiencyValue"),
-  phaseText: document.querySelector("#phaseText"),
-  goalText: document.querySelector("#goalText")
-});
-
-controller.startSimulationLoop();
+const demo = new CarRouteDemo(document.querySelector("#sceneCanvas"));
+demo.start();

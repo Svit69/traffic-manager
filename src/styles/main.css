@@ -1,4 +1,2 @@
 @import "./tokens.css";
-@import "./layout.css";
-@import "./hud.css";
-@import "./controls.css";
+@import "./scene.css";

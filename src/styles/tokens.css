@@ -1,13 +1,11 @@
 :root {
   color-scheme: dark;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #101820;
+  background: #111827;
   color: #f8fafc;
-  --panel: rgba(15, 23, 42, 0.9);
-  --panel-border: rgba(148, 163, 184, 0.28);
-  --accent: #22c55e;
-  --warning: #fb7185;
-  --text-soft: #cbd5e1;
+  --road: #2f3942;
+  --road-edge: #d7dde4;
+  --grass: #1f4d3c;
 }
 
 * {
@@ -19,5 +17,5 @@ body {
   min-width: 320px;
   min-height: 100dvh;
   overflow: hidden;
-  background: #101820;
+  background: #111827;
 }

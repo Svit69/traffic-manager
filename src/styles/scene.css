@@ -1,0 +1,13 @@
+.scene-shell {
+  width: 100vw;
+  min-height: 100dvh;
+  display: grid;
+  background: radial-gradient(circle at 50% 45%, #2b6b50, var(--grass));
+}
+
+#sceneCanvas {
+  width: 100%;
+  height: 100dvh;
+  display: block;
+  touch-action: none;
+}
