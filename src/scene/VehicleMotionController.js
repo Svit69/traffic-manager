@@ -34,7 +34,8 @@ export class VehicleMotionController {
   }
 
   #snapToTargetWhenArrived(targetY) {
-    if (this.route.y > targetY) return;
+    const arrivalTolerance = 2 * this.route.bounds.ratio;
+    if (this.route.y - targetY > arrivalTolerance) return;
     this.route.y = targetY;
     this.speed = 0;
     this.state = this.state === "approaching" ? "waiting" : "done";
