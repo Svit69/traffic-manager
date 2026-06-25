@@ -15,7 +15,7 @@ export class RouteFactory {
   }
 
   #resolveX(frame, normalizedX) {
-    return frame.x + frame.width * normalizedX + 40 * frame.scale;
+    return frame.x + frame.width * normalizedX + 90 * frame.scale;
   }
 
   #resolveY(frame, normalizedY) {
