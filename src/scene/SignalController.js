@@ -41,7 +41,7 @@ export class SignalController {
 
   #advanceSignalPhase() {
     if (this.state === "yellow") {
-      this.state = this.yellowTargetState;
+      this.state = this.yellowTargetState === "red" && this.redDuration <= 0 ? "green" : this.yellowTargetState;
       return;
     }
     this.yellowTargetState = this.state === "green" ? "red" : "green";

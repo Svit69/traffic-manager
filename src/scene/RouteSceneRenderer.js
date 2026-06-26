@@ -22,7 +22,7 @@ export class RouteSceneRenderer {
     this.layerRenderer.renderLayer(assets.borderBack, frame);
     this.layerRenderer.renderLayer(assets.buildings, frame);
     this.layerRenderer.renderLayer(assets.borderFront, frame);
-    this.#renderCar(assets.car, vehicle);
+    if (vehicle.isVisible) this.#renderCar(assets.car, vehicle);
     this.spriteRenderer.renderTrafficLight(assets.trafficLights[signal.state], frame, signal.isHighlighted);
   }
 
