@@ -19,7 +19,7 @@ export class RouteFactory {
     return {
       frame,
       x: this.#resolveX(frame, -0.16, 0),
-      y: this.#resolveY(frame, 0.595) - 20 * frame.scale,
+      y: this.#resolveY(frame, 0.595) - 50 * frame.scale,
       exitX: this.#resolveX(frame, 1.16, 0),
       carHeight: carWidth * 0.58,
       carWidth,
