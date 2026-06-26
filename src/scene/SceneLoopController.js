@@ -9,6 +9,7 @@ export class SceneLoopController {
     this.lastFrameTime = 0;
     this.animationFrameId = null;
     this.didShowStopHint = false;
+    this.gameTimeScale = 1.25;
   }
 
   start(assets) {
@@ -25,13 +26,18 @@ export class SceneLoopController {
   }
 
   #renderAnimationFrame(time) {
-    const deltaSeconds = Math.min((time - this.lastFrameTime) / 1000 || 0, 0.05);
+    const deltaSeconds = this.#calculateGameDeltaSeconds(time);
     this.signal.updateSignalPhase(deltaSeconds);
     const vehicle = this.motion.updatePosition(deltaSeconds, this.signal.isGreen());
     this.#presentStopHintWhenNeeded();
     this.renderer.renderScene(this.assets, vehicle, this.signal.createSignalSnapshot());
     this.lastFrameTime = time;
     this.animationFrameId = requestAnimationFrame((nextTime) => this.#renderAnimationFrame(nextTime));
+  }
+
+  #calculateGameDeltaSeconds(time) {
+    const realDeltaSeconds = (time - this.lastFrameTime) / 1000 || 0;
+    return Math.min(realDeltaSeconds * this.gameTimeScale, 0.05);
   }
 
   #presentStopHintWhenNeeded() {
