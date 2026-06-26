@@ -26,6 +26,7 @@ export class SceneLoopController {
 
   #renderAnimationFrame(time) {
     const deltaSeconds = Math.min((time - this.lastFrameTime) / 1000 || 0, 0.05);
+    this.signal.updateSignalPhase(deltaSeconds);
     const vehicle = this.motion.updatePosition(deltaSeconds, this.signal.isGreen());
     this.#presentStopHintWhenNeeded();
     this.renderer.renderScene(this.assets, vehicle, this.signal.createSignalSnapshot());

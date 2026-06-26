@@ -3,12 +3,24 @@ export class SignalController {
     this.state = "off";
     this.greenDuration = 0;
     this.redDuration = 0;
+    this.yellowDuration = 1;
+    this.elapsedSeconds = 0;
   }
 
   activateGreen({ greenDuration, redDuration }) {
     this.greenDuration = greenDuration;
     this.redDuration = redDuration;
+    this.elapsedSeconds = 0;
     this.state = greenDuration > 0 ? "green" : "off";
+  }
+
+  updateSignalPhase(deltaSeconds) {
+    if (this.state === "off") return;
+    this.elapsedSeconds += deltaSeconds;
+    while (this.elapsedSeconds >= this.#getCurrentDuration()) {
+      this.elapsedSeconds -= this.#getCurrentDuration();
+      this.#advanceSignalPhase();
+    }
   }
 
   isGreen() {
@@ -20,5 +32,17 @@ export class SignalController {
       state: this.state,
       isHighlighted: this.state === "off"
     };
+  }
+
+  #getCurrentDuration() {
+    if (this.state === "green") return Math.max(this.greenDuration, 0.1);
+    if (this.state === "yellow") return this.yellowDuration;
+    return Math.max(this.redDuration, 0.1);
+  }
+
+  #advanceSignalPhase() {
+    if (this.state === "green") this.state = "yellow";
+    else if (this.state === "yellow") this.state = "red";
+    else this.state = this.greenDuration > 0 ? "green" : "red";
   }
 }

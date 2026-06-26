@@ -8,7 +8,7 @@ export class TutorialPanel {
     this.greenOutput = panel.querySelector("#greenOutput");
     this.redOutput = panel.querySelector("#redOutput");
     this.button = panel.querySelector("#enableGreenButton");
-    this.#bindOutputUpdates();
+    this.#bindLinkedSliders();
   }
 
   bindEnableGreen(handler) {
@@ -36,8 +36,15 @@ export class TutorialPanel {
     return { greenDuration: Number(this.greenInput.value), redDuration: Number(this.redInput.value) };
   }
 
-  #bindOutputUpdates() {
-    this.greenInput.addEventListener("input", () => this.greenOutput.value = `${this.greenInput.value} \u0441`);
-    this.redInput.addEventListener("input", () => this.redOutput.value = `${this.redInput.value} \u0441`);
+  #bindLinkedSliders() {
+    this.greenInput.addEventListener("input", () => this.#syncDurations("green"));
+    this.redInput.addEventListener("input", () => this.#syncDurations("red"));
+    this.#syncDurations("green");
+  }
+  #syncDurations(source) {
+    if (source === "green") this.redInput.value = 10 - Number(this.greenInput.value);
+    if (source === "red") this.greenInput.value = 10 - Number(this.redInput.value);
+    this.greenOutput.value = `${this.greenInput.value} \u0441`;
+    this.redOutput.value = `${this.redInput.value} \u0441`;
   }
 }
