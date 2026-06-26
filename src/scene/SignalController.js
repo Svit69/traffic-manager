@@ -4,16 +4,15 @@ export class SignalController {
     this.greenDuration = 0;
     this.redDuration = 0;
     this.yellowDuration = 1;
+    this.yellowTargetState = "red";
     this.elapsedSeconds = 0;
   }
-
   activateGreen({ greenDuration, redDuration }) {
     this.greenDuration = greenDuration;
     this.redDuration = redDuration;
     this.elapsedSeconds = 0;
     this.state = greenDuration > 0 ? "green" : "off";
   }
-
   updateSignalPhase(deltaSeconds) {
     if (this.state === "off") return;
     this.elapsedSeconds += deltaSeconds;
@@ -41,8 +40,11 @@ export class SignalController {
   }
 
   #advanceSignalPhase() {
-    if (this.state === "green") this.state = "yellow";
-    else if (this.state === "yellow") this.state = "red";
-    else this.state = this.greenDuration > 0 ? "green" : "red";
+    if (this.state === "yellow") {
+      this.state = this.yellowTargetState;
+      return;
+    }
+    this.yellowTargetState = this.state === "green" ? "red" : "green";
+    this.state = "yellow";
   }
 }
