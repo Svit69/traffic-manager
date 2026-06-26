@@ -1,0 +1,49 @@
+.duration-card {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  padding: 14px 16px 12px;
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  border-radius: 18px;
+  background: radial-gradient(circle at 50% 0%, #1e2633, #111720 66%);
+}
+
+.duration-card span {
+  grid-column: 1 / -1;
+  color: #f2f6fb;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.duration-card output {
+  justify-self: end;
+  color: #f8fafc;
+  font-size: 36px;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.duration-card small {
+  align-self: end;
+  padding-bottom: 5px;
+  color: #d8e0ea;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.duration-card input {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-height: 44px;
+  accent-color: #4bd843;
+}
+
+.duration-card em {
+  color: #9aa7b8;
+  font-size: 10px;
+  font-style: normal;
+}
+
+.duration-card em:last-child {
+  justify-self: end;
+}

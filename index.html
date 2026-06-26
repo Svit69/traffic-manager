@@ -12,17 +12,26 @@
       <section id="tutorialPanel" class="tutorial-panel">
         <p id="tutorialText">&#1053;&#1072;&#1078;&#1084;&#1080;&#1090;&#1077; &#1085;&#1072; &#1089;&#1074;&#1077;&#1090;&#1086;&#1092;&#1086;&#1088; &#1080; &#1074;&#1082;&#1083;&#1102;&#1095;&#1080;&#1090;&#1077; &#1079;&#1077;&#1083;&#1105;&#1085;&#1099;&#1081; &#1089;&#1080;&#1075;&#1085;&#1072;&#1083;.</p>
         <div id="signalControls" class="signal-controls" hidden>
-          <label>
-            <span>&#1047;&#1077;&#1083;&#1105;&#1085;&#1099;&#1081;</span>
-            <input id="greenDuration" type="range" min="0" max="10" value="5" />
-            <output id="greenOutput">5 &#1089;</output>
-          </label>
-          <label>
-            <span>&#1050;&#1088;&#1072;&#1089;&#1085;&#1099;&#1081;</span>
-            <input id="redDuration" type="range" min="0" max="10" value="5" />
+          <div class="signal-card">
+            <span class="signal-dot"></span>
+            <span><b>&#1047;&#1077;&#1083;&#1105;&#1085;&#1099;&#1081; &#1089;&#1074;&#1077;&#1090;</b><small>&#1044;&#1083;&#1103; &#1074;&#1072;&#1096;&#1077;&#1075;&#1086; &#1085;&#1072;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1103;</small></span>
             <output id="redOutput">5 &#1089;</output>
+          </div>
+          <label class="duration-card">
+            <span>&#1059;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1080;&#1090;&#1077; &#1076;&#1083;&#1080;&#1090;&#1077;&#1083;&#1100;&#1085;&#1086;&#1089;&#1090;&#1100;</span>
+            <output id="greenOutput">5</output><small>&#1089;&#1077;&#1082;</small>
+            <input id="greenDuration" type="range" min="0" max="10" value="5" aria-label="Green light duration" />
+            <em>0 &#1089;&#1077;&#1082;</em><em>10 &#1089;&#1077;&#1082;</em>
           </label>
-          <button id="enableGreenButton" type="button">&#1042;&#1082;&#1083;&#1102;&#1095;&#1080;&#1090;&#1100; &#1079;&#1077;&#1083;&#1105;&#1085;&#1099;&#1081;</button>
+          <input id="redDuration" type="range" min="0" max="10" value="5" hidden />
+          <div class="preset-row">
+            <button type="button" data-green-duration="0">0 &#1089;&#1077;&#1082;</button>
+            <button type="button" data-green-duration="2">2 &#1089;&#1077;&#1082;</button>
+            <button type="button" data-green-duration="5">5 &#1089;&#1077;&#1082;</button>
+            <button type="button" data-green-duration="8">8 &#1089;&#1077;&#1082;</button>
+            <button type="button" data-green-duration="10">10 &#1089;&#1077;&#1082;</button>
+          </div>
+          <button id="enableGreenButton" class="apply-button" type="button">&#1055;&#1088;&#1080;&#1084;&#1077;&#1085;&#1080;&#1090;&#1100;</button>
         </div>
       </section>
     </main>

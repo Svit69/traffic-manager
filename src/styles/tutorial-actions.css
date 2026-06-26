@@ -1,0 +1,40 @@
+.preset-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+}
+
+.preset-row button,
+.apply-button {
+  min-height: 46px;
+  border: 0;
+  font-weight: 850;
+  touch-action: manipulation;
+}
+
+.preset-row button {
+  border-radius: 12px;
+  background: #151b25;
+  color: #d9e2ee;
+  font-size: 11px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.preset-row button.is-active {
+  background: linear-gradient(180deg, #54e34c, #34c832);
+  color: #f7fff7;
+}
+
+.apply-button {
+  width: 100%;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #58e24f, #38c834);
+  color: #f8fff8;
+  font-size: 15px;
+  box-shadow: 0 12px 28px rgba(64, 216, 58, 0.22);
+}
+
+.preset-row button:active,
+.apply-button:active {
+  transform: translateY(1px);
+}
