@@ -15,14 +15,15 @@ export class RouteSceneRenderer {
     return this.frameResolver.resolveFrame();
   }
 
-  renderScene(assets, vehicle, signal) {
+  renderScene(assets, vehicles, signal) {
     const frame = this.resolveSceneFrame();
     this.#clearScene();
     this.layerRenderer.renderLayer(assets.road, frame);
     this.layerRenderer.renderLayer(assets.borderBack, frame);
     this.layerRenderer.renderLayer(assets.buildings, frame);
     this.layerRenderer.renderLayer(assets.borderFront, frame);
-    if (vehicle.isVisible) this.#renderCar(assets.car, vehicle);
+    this.#renderVehicle(assets.crossCar, vehicles.horizontal);
+    this.#renderVehicle(assets.car, vehicles.vertical);
     this.spriteRenderer.renderTrafficLight(assets.trafficLights[signal.state], frame, signal.isHighlighted);
   }
 
@@ -44,7 +45,8 @@ export class RouteSceneRenderer {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
-  #renderCar(carImage, vehicle) {
+  #renderVehicle(carImage, vehicle) {
+    if (!vehicle.isVisible) return;
     this.context.drawImage(carImage, vehicle.x - vehicle.carWidth / 2, vehicle.y - vehicle.carHeight / 2, vehicle.carWidth, vehicle.carHeight);
   }
 }

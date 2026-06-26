@@ -4,7 +4,7 @@ import { SceneAssetLoader } from "./SceneAssetLoader.js";
 import { SceneLoopController } from "./SceneLoopController.js";
 import { SignalController } from "./SignalController.js";
 import { TutorialPanel } from "./TutorialPanel.js";
-import { VehicleMotionController } from "./VehicleMotionController.js";
+import { VehicleFleetController } from "./VehicleFleetController.js";
 
 export class CarRouteDemo {
   constructor({ canvas, panel }) {
@@ -15,7 +15,7 @@ export class CarRouteDemo {
     this.loop = new SceneLoopController({
       viewport: new CanvasViewport(canvas),
       renderer: this.renderer,
-      motion: new VehicleMotionController(),
+      motion: new VehicleFleetController(),
       signal: this.signal,
       panel: this.panel
     });

@@ -28,9 +28,9 @@ export class SceneLoopController {
   #renderAnimationFrame(time) {
     const deltaSeconds = this.#calculateGameDeltaSeconds(time);
     this.signal.updateSignalPhase(deltaSeconds);
-    const vehicle = this.motion.updatePosition(deltaSeconds, this.signal.isGreen());
+    const vehicles = this.motion.updatePosition(deltaSeconds, this.signal.isGreen());
     this.#presentStopHintWhenNeeded();
-    this.renderer.renderScene(this.assets, vehicle, this.signal.createSignalSnapshot());
+    this.renderer.renderScene(this.assets, vehicles, this.signal.createSignalSnapshot());
     this.lastFrameTime = time;
     this.animationFrameId = requestAnimationFrame((nextTime) => this.#renderAnimationFrame(nextTime));
   }
