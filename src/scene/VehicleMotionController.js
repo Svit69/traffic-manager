@@ -16,17 +16,23 @@ export class VehicleMotionController {
     this.speed = 0;
   }
 
-  updatePosition(deltaSeconds) {
-    if (this.state === "waiting") return this.#createVehicleSnapshot();
-    const targetY = this.state === "approaching" ? this.route.stopY : this.route.exitY;
+  updatePosition(deltaSeconds, isGreen) {
+    if (this.state === "waiting" && !isGreen) return this.#createVehicleSnapshot();
+    if (this.state === "waiting" && isGreen) this.state = "leaving";
+    const targetY = this.#resolveTargetY(isGreen);
     this.speed = this.speedController.calculateNextSpeed(this.route, this.speed, targetY, deltaSeconds);
     this.route.y -= this.speed * deltaSeconds;
     this.#snapToTargetWhenArrived(targetY);
     return this.#createVehicleSnapshot();
   }
 
-  releaseVehicle() {
-    if (this.state === "waiting") this.state = "leaving";
+  isWaitingAtSignal() {
+    return this.state === "waiting";
+  }
+
+  #resolveTargetY(isGreen) {
+    if (this.state === "approaching" && !isGreen) return this.route.stopY;
+    return this.route.exitY;
   }
 
   #snapToTargetWhenArrived(targetY) {
@@ -34,7 +40,7 @@ export class VehicleMotionController {
     if (this.route.y - targetY > arrivalTolerance) return;
     this.route.y = targetY;
     this.speed = 0;
-    this.state = this.state === "approaching" ? "waiting" : "done";
+    this.state = targetY === this.route.stopY ? "waiting" : "done";
   }
 
   #createVehicleSnapshot() {

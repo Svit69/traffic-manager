@@ -11,17 +11,20 @@ export class TutorialPanel {
     this.#bindOutputUpdates();
   }
 
-  bindOpenRequest(handler) {
-    this.text.addEventListener("click", handler);
-  }
-
   bindEnableGreen(handler) {
     this.button.addEventListener("click", handler);
   }
 
+  presentBrokenSignalHint() {
+    this.panel.classList.add("is-visible", "is-hint");
+    this.text.textContent = "\u0412\u0430\u0443, \u043a\u0430\u0436\u0435\u0442\u0441\u044f, \u0441\u0432\u0435\u0442\u043e\u0444\u043e\u0440 \u043d\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442.";
+  }
+
   showSignalControls() {
+    this.panel.classList.add("is-visible", "is-popup");
+    this.panel.classList.remove("is-hint");
     this.controls.hidden = false;
-    this.text.textContent = "\u0417\u0430\u0434\u0430\u0439\u0442\u0435 \u0437\u0435\u043b\u0451\u043d\u044b\u0439 \u0438 \u043a\u0440\u0430\u0441\u043d\u044b\u0439 \u0446\u0438\u043a\u043b.";
+    this.text.textContent = "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u0437\u0435\u043b\u0451\u043d\u044b\u0439, \u0447\u0442\u043e\u0431\u044b \u043c\u0430\u0448\u0438\u043d\u0430 \u043f\u0440\u043e\u0435\u0445\u0430\u043b\u0430.";
   }
 
   presentGreenEnabled() {
