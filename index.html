@@ -9,6 +9,22 @@
   <body>
     <main class="scene-shell">
       <canvas id="sceneCanvas" aria-label="Car route demo"></canvas>
+      <section id="tutorialPanel" class="tutorial-panel">
+        <p id="tutorialText">&#1053;&#1072;&#1078;&#1084;&#1080;&#1090;&#1077; &#1085;&#1072; &#1089;&#1074;&#1077;&#1090;&#1086;&#1092;&#1086;&#1088; &#1080; &#1074;&#1082;&#1083;&#1102;&#1095;&#1080;&#1090;&#1077; &#1079;&#1077;&#1083;&#1105;&#1085;&#1099;&#1081; &#1089;&#1080;&#1075;&#1085;&#1072;&#1083;.</p>
+        <div id="signalControls" class="signal-controls" hidden>
+          <label>
+            <span>&#1047;&#1077;&#1083;&#1105;&#1085;&#1099;&#1081;</span>
+            <input id="greenDuration" type="range" min="0" max="10" value="5" />
+            <output id="greenOutput">5 &#1089;</output>
+          </label>
+          <label>
+            <span>&#1050;&#1088;&#1072;&#1089;&#1085;&#1099;&#1081;</span>
+            <input id="redDuration" type="range" min="0" max="10" value="5" />
+            <output id="redOutput">5 &#1089;</output>
+          </label>
+          <button id="enableGreenButton" type="button">&#1042;&#1082;&#1083;&#1102;&#1095;&#1080;&#1090;&#1100; &#1079;&#1077;&#1083;&#1105;&#1085;&#1099;&#1081;</button>
+        </div>
+      </section>
     </main>
     <script type="module" src="/src/main.js"></script>
   </body>

@@ -1,0 +1,46 @@
+.tutorial-panel {
+  position: fixed;
+  left: max(14px, env(safe-area-inset-left));
+  right: max(14px, env(safe-area-inset-right));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 5;
+  display: grid;
+  gap: 10px;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.88);
+  color: #f8fafc;
+  font-size: 14px;
+}
+
+.tutorial-panel p {
+  margin: 0;
+  line-height: 1.35;
+}
+
+.signal-controls,
+.signal-controls label {
+  display: grid;
+  gap: 8px;
+}
+
+.signal-controls label {
+  grid-template-columns: 1fr auto;
+}
+
+.signal-controls input {
+  grid-column: 1 / -1;
+  min-height: 44px;
+  accent-color: #22c55e;
+}
+
+.signal-controls button {
+  min-height: 48px;
+  border: 0;
+  border-radius: 10px;
+  background: #22c55e;
+  color: #052e16;
+  font-weight: 800;
+}

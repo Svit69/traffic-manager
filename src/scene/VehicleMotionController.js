@@ -6,7 +6,6 @@ export class VehicleMotionController {
     this.routeFactory = new RouteFactory();
     this.speedController = new SmoothSpeedController();
     this.state = "approaching";
-    this.waitTimer = 0;
     this.speed = 0;
     this.route = null;
   }
@@ -14,12 +13,11 @@ export class VehicleMotionController {
   resetRoute(bounds) {
     this.route = this.routeFactory.createVerticalRoute(bounds);
     this.state = "approaching";
-    this.waitTimer = 0;
     this.speed = 0;
   }
 
   updatePosition(deltaSeconds) {
-    if (this.state === "waiting") return this.#processWaiting(deltaSeconds);
+    if (this.state === "waiting") return this.#createVehicleSnapshot();
     const targetY = this.state === "approaching" ? this.route.stopY : this.route.exitY;
     this.speed = this.speedController.calculateNextSpeed(this.route, this.speed, targetY, deltaSeconds);
     this.route.y -= this.speed * deltaSeconds;
@@ -27,10 +25,8 @@ export class VehicleMotionController {
     return this.#createVehicleSnapshot();
   }
 
-  #processWaiting(deltaSeconds) {
-    this.waitTimer += deltaSeconds;
-    if (this.waitTimer >= 2) this.state = "leaving";
-    return this.#createVehicleSnapshot();
+  releaseVehicle() {
+    if (this.state === "waiting") this.state = "leaving";
   }
 
   #snapToTargetWhenArrived(targetY) {

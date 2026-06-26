@@ -15,15 +15,29 @@ export class RouteSceneRenderer {
     return this.frameResolver.resolveFrame();
   }
 
-  renderScene(assets, vehicle) {
+  renderScene(assets, vehicle, signal) {
     const frame = this.resolveSceneFrame();
     this.#clearScene();
     this.layerRenderer.renderLayer(assets.road, frame);
     this.layerRenderer.renderLayer(assets.borderBack, frame);
     this.layerRenderer.renderLayer(assets.buildings, frame);
     this.layerRenderer.renderLayer(assets.borderFront, frame);
-    this.spriteRenderer.renderTrafficLight(assets.trafficLight, frame);
+    this.spriteRenderer.renderTrafficLight(assets.trafficLights[signal.state], frame, signal.isHighlighted);
     this.#renderCar(assets.car, vehicle);
+  }
+
+  bindTrafficLightTap(handler) {
+    this.canvas.addEventListener("pointerdown", (event) => {
+      if (this.spriteRenderer.includesPoint(this.resolveSceneFrame(), this.#resolvePoint(event))) handler();
+    });
+  }
+
+  #resolvePoint(event) {
+    const bounds = this.canvas.getBoundingClientRect();
+    return {
+      x: (event.clientX - bounds.left) * (this.canvas.width / bounds.width),
+      y: (event.clientY - bounds.top) * (this.canvas.height / bounds.height)
+    };
   }
 
   #clearScene() {
@@ -31,12 +45,6 @@ export class RouteSceneRenderer {
   }
 
   #renderCar(carImage, vehicle) {
-    this.context.drawImage(
-      carImage,
-      vehicle.x - vehicle.carWidth / 2,
-      vehicle.y - vehicle.carHeight / 2,
-      vehicle.carWidth,
-      vehicle.carHeight
-    );
+    this.context.drawImage(carImage, vehicle.x - vehicle.carWidth / 2, vehicle.y - vehicle.carHeight / 2, vehicle.carWidth, vehicle.carHeight);
   }
 }
