@@ -18,8 +18,8 @@ export class SceneSpriteRenderer {
   #resolveTrafficLightBounds(image, frame) {
     const width = frame.width * 0.24;
     const height = width * (image.height / image.width);
-    const centerX = frame.x + frame.width * 0.69 - 30 * frame.scale;
-    const centerY = frame.y + frame.height * 0.48 + 110 * frame.scale;
+    const centerX = frame.x + frame.width * 0.69 - 45 * frame.scale;
+    const centerY = frame.y + frame.height * 0.48 + 115 * frame.scale;
     return { x: centerX - width / 2, y: centerY - height / 2, width, height };
   }
 

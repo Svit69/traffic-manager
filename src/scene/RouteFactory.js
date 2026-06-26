@@ -1,6 +1,6 @@
 export class RouteFactory {
   createVerticalRoute(frame) {
-    const carHeight = frame.height * 0.125;
+    const carHeight = frame.height * 0.1125;
     return {
       frame,
       x: this.#resolveX(frame, 0.465),
