@@ -1,24 +1,38 @@
 .signal-controls,
 .signal-controls label {
   display: grid;
-  gap: 8px;
+  gap: 9px;
 }
 
 .signal-controls label {
   grid-template-columns: 1fr auto;
+  padding: 10px;
+  border-radius: 16px;
+  background: #f8fafc;
+}
+
+.signal-controls span {
+  color: #334155;
+  font-weight: 700;
+}
+
+.signal-controls output {
+  color: #e60023;
+  font-weight: 800;
 }
 
 .signal-controls input {
   grid-column: 1 / -1;
   min-height: 44px;
-  accent-color: #22c55e;
+  accent-color: #e60023;
 }
 
 .signal-controls button {
   min-height: 48px;
   border: 0;
-  border-radius: 10px;
-  background: #22c55e;
-  color: #052e16;
-  font-weight: 800;
+  border-radius: 999px;
+  background: #e60023;
+  color: #fff;
+  font-weight: 850;
+  box-shadow: 0 10px 24px rgba(230, 0, 35, 0.24);
 }
