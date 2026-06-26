@@ -15,7 +15,7 @@ export class RouteFactory {
   }
 
   createHorizontalRoute(frame) {
-    const carWidth = frame.width * 0.184;
+    const carWidth = frame.width * 0.212;
     return {
       frame,
       x: this.#resolveX(frame, -0.16, 0),
